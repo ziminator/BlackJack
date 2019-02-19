@@ -1,6 +1,6 @@
 class Interface
-  def puts_welcome
-    puts 'Добро пожаловать в игру BlackJack!\n'
+  def puts_welcome(player)
+    puts "#{player} - добро пожаловать в игру BlackJack!\n"
   end
 
   def puts_username
