@@ -11,7 +11,7 @@ class Cards
   end
 
   def validate_cards
-    raise 'Ошибка! Карты отсутствуют' unless CARDS.include?(@cards)
     raise 'Ошибка! Отсутствуют масти' unless SUIT.include?(@suit)
+    raise 'Ошибка! Карты отсутствуют' unless CARDS.include?(@cards)
   end
 end
