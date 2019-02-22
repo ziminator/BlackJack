@@ -30,6 +30,22 @@ class Main
     end
   end
 
+  def start_game
+    start_bet
+    user_move
+    try_again?
+  end
+
+  def start_bet
+    @player.bank.place_bet
+    @computer.bank.place_bet
+    @ui.bet_message(@player.bank.amount, @computer.bank.amount)
+  end
+
+  def user_move
+
+  end
+
 end
 
 Main.new
