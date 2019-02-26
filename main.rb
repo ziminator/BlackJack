@@ -43,7 +43,37 @@ class Main
   end
 
   def user_move
+    answer = @ui.puts_menu(@player.player_cards, @player.card_sum, @computer.hide_cards, @player.two_cards?)
+    case answer
+    when 1
+      open_cards
+    when 2
+      computer_move
+    when 3
+      if @player.two_cards?
+        @player.take_card(@desk.get_card)
+        computer_move
+      else
+        exit
+      end
+    end
+  end
 
+  def open_cards
+
+  end
+
+  def computer_move
+    @computer.take_card(@desk.get_card) if @computer.take_card?
+    next_move?
+  end
+
+  def next_move?
+    check_cards_count ? open_cards : user_move
+  end
+
+  def check_cards_count
+    @computer.cards.size == && @player.cards.size == 3
   end
 
 end
