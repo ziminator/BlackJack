@@ -1,7 +1,7 @@
 require_relative 'player.rb'
 
 class Computer < Player
-  def card_taken?
+  def take_card?
     card_sum < 17 && cards.size == 2
   end
 

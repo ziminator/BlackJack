@@ -1,9 +1,25 @@
+require_relative 'deck.rb'
+require_relative 'cards.rb'
+
 class Player
   attr_reader :name
   attr_accessor :bank, :cards
 
   def initialize(name)
     @name = name
+    @bank = 0
+  end
+
+  def take_card(cards)
+    if @cards
+      self.cards += cards
+    else
+      self.cards = cards
+    end
+  end
+
+  def return_cards
+    self.cards = nil
   end
 
   def player_cards
@@ -22,10 +38,10 @@ class Player
 
   def assign_values
     values = []
-    card.each do |card|
+    cards.each do |card|
       values << if pictures.include?(card.value)
         10
-      elsif card.value == 'T'
+      elsif card.value == 'Т'
         1
       else
         card.value
@@ -38,4 +54,7 @@ class Player
     self.cards.size == 2
   end
 
+  def pictures
+    %w[В Д К]
+  end
 end
