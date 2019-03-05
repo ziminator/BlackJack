@@ -7,9 +7,9 @@ class Player
   attr_accessor :bank, :cards
 
   def initialize(name)
+    @bank = Bank.new(self)
     @hand = Hand.new
     @name = name
-    @bank = 0
   end
 
   def take_card(cards)

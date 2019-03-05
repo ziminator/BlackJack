@@ -11,8 +11,6 @@ class Main
     @ui = Interface.new
     @player = Player.new(@ui.puts_username)
     @computer = Computer.new('Computer')
-    @player.bank = Bank.new(@player)
-    @computer.bank = Bank.new(@computer)
     @ui.puts_welcome(@player.name)
     start_new_game
   end
