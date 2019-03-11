@@ -1,11 +1,12 @@
 require_relative 'player.rb'
+require_relative 'hand.rb'
 
 class Computer < Player
   def take_card?
-    card_sum < 17 && cards.size == 2
+    @hand.card_sum < 17 && @hand.cards.size == 2
   end
 
   def hide_cards
-    cards.map { '*' }.join(' ')
+    @hand.cards.map { '*' }.join(' ')
   end
 end

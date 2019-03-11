@@ -17,17 +17,12 @@ class Main
 
   def start_new_game
     loop do
-      @deck = Deck.new    #Перетасованый массив с картами
+      @deck = Deck.new
 
-      if @player.hand.cards
+      if @player.hand
         @player.return_cards
         @computer.return_cards
       end
-
-      #p @player.cards
-      #p @player.hand
-      #p @player.hand.cards
-
       @player.take_card(@deck.get_start_cards)
       @computer.take_card(@deck.get_start_cards)
       return unless start_game
@@ -105,7 +100,7 @@ class Main
   end
 
   def check_cards_count
-    @computer.cards.size == 3 && @player.cards.size == 3
+    @computer.hand.cards.size == 3 && @player.hand.cards.size == 3
   end
 
   def return_money(*players)
@@ -126,7 +121,6 @@ class Main
       exit
     end
   end
-
 end
 
 Main.new

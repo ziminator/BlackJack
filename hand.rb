@@ -5,16 +5,16 @@ class Hand
     @cards = []
   end
 
-  #def add_card(cards)
-  #  if @cards
-  #    self.cards += cards
-  #  else
-  #    self.cards = cards
-  #  end
-  #end
+  def add_card(cards)
+    if @cards
+      @cards += cards
+    else
+      @cards = cards
+    end
+  end
 
-  def card_sum(cards)
-    values = assign_values(cards)
+  def card_sum
+    values = assign_values
     values.each do |value|
       if values.sum < 21 && value == 1
         values[values.index(value)] = 11 if values.sum + 10 < 22
@@ -23,9 +23,9 @@ class Hand
     values.sum
   end
 
-  def assign_values(cards)
+  def assign_values
     values = []
-    cards.each do |card|
+    @cards.each do |card|
       values << if pictures.include?(card.value)
         10
       elsif card.value == 'Т'
@@ -37,8 +37,8 @@ class Hand
     values
   end
 
-  def player_cards(cards)
-    (cards.map { |card| "#{card.value}#{card.suit}" }).join(' ')
+  def player_cards
+    (@cards.map { |card| "#{card.value}#{card.suit}" }).join(' ')
   end
 
   def pictures
@@ -46,6 +46,10 @@ class Hand
   end
 
   def return_cards
-    self.cards = nil
+    @cards = nil
+  end
+
+  def two_cards
+    @cards.size == 2
   end
 end
