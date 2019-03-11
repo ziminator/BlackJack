@@ -17,11 +17,17 @@ class Main
 
   def start_new_game
     loop do
-      @deck = Deck.new
-      if @player.cards
+      @deck = Deck.new    #Перетасованый массив с картами
+
+      if @player.hand.cards
         @player.return_cards
         @computer.return_cards
       end
+
+      #p @player.cards
+      #p @player.hand
+      #p @player.hand.cards
+
       @player.take_card(@deck.get_start_cards)
       @computer.take_card(@deck.get_start_cards)
       return unless start_game

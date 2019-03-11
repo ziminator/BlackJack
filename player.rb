@@ -3,7 +3,7 @@ require_relative 'cards.rb'
 require_relative 'hand.rb'
 
 class Player
-  attr_reader :name
+  attr_reader :name, :hand
   attr_accessor :bank, :cards
 
   def initialize(name)
@@ -20,6 +20,10 @@ class Player
     end
   end
 
+  #def take_card(cards)
+  #  @hand.add_card(cards)
+  #end
+
   def card_sum
     @hand.card_sum(cards)
   end
@@ -28,9 +32,7 @@ class Player
     @hand.player_cards(cards)
   end
 
-  def return_cards
-    self.cards = nil
-  end
+
 
   def two_cards?
     self.cards.size == 2

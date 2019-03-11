@@ -1,4 +1,18 @@
 class Hand
+  attr_accessor :cards
+
+  def initialize
+    @cards = []
+  end
+
+  #def add_card(cards)
+  #  if @cards
+  #    self.cards += cards
+  #  else
+  #    self.cards = cards
+  #  end
+  #end
+
   def card_sum(cards)
     values = assign_values(cards)
     values.each do |value|
@@ -29,5 +43,9 @@ class Hand
 
   def pictures
     %w[В Д К]
+  end
+
+  def return_cards
+    self.cards = nil
   end
 end
